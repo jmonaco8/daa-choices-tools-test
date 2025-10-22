@@ -8,11 +8,13 @@ When consumers install the Protect My Choices (v2.0) extension – which is curr
 
 Web participants can access these user preferences from the extension, as required and when available, in real time. Vendors who serve ads or collect data about users, such as ad servers, exchanges, DSPs, DMPs, CDPs, etc., will need to listen for the “**ExtensionLoaded**” event name on the top application level. This sample JS code confirms that the extension was loaded:
 
-`window.addEventListener('message', (event) \=\> {  
+```
+window.addEventListener('message', (event) \=\> {  
     if (event.data.type \=== "ExtensionLoaded") {  
         // Do something when the extension is loaded  
     }  
-});`
+});
+```
 
 If the extension is loaded, the following JavaScript code retrieves the user preference string: 
 
@@ -20,13 +22,17 @@ If the extension is loaded, the following JavaScript code retrieves the user pre
 
 When combined, the implementation code should look something like this:
 
-`window.addEventListener('message', (event) \=\> {  
+<pre>
+```
+window.addEventListener('message', (event) \=\> {  
   if (event.data.type \=== "ExtensionLoaded") {  
     window.postMessage({type: "GetAdPreferences"}, "\*");  
   } else if (event.data.type \=== "AdPreferences") {  
     const adPrefs \= event.data.data; // Store preferences  
     }  
-});`
+});
+```
+</pre>
 
 Vendors should send the preference string to themselves so that it can be passed on to other parties. If vendors need to know the users’ preferences before ad decisioning, they should delay ad decisioning until after retrieving the string.[^1]
 
