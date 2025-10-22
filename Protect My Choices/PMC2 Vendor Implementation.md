@@ -8,29 +8,28 @@ When consumers install the Protect My Choices (v2.0) extension – which is curr
 
 Web participants can access these user preferences from the extension, as required and when available, in real time. Vendors who serve ads or collect data about users, such as ad servers, exchanges, DSPs, DMPs, CDPs, etc., will need to listen for the “**ExtensionLoaded**” event name on the top application level. This sample JS code confirms that the extension was loaded:
 
-window.addEventListener('message', (event) \=\> {  
+`window.addEventListener('message', (event) \=\> {  
     if (event.data.type \=== "ExtensionLoaded") {  
         // Do something when the extension is loaded  
     }  
-});
+});`
 
 If the extension is loaded, the following JavaScript code retrieves the user preference string: 
 
-window.postMessage({type: "GetAdPreferences"}, "\*");
+`window.postMessage({type: "GetAdPreferences"}, "\*");`
 
 When combined, the implementation code should look something like this:
 
-window.addEventListener('message', (event) \=\> {  
+`window.addEventListener('message', (event) \=\> {  
   if (event.data.type \=== "ExtensionLoaded") {  
     window.postMessage({type: "GetAdPreferences"}, "\*");  
   } else if (event.data.type \=== "AdPreferences") {  
     const adPrefs \= event.data.data; // Store preferences  
     }  
-});
+});`
 
 Vendors should send the preference string to themselves so that it can be passed on to other parties. If vendors need to know the users’ preferences before ad decisioning, they should delay ad decisioning until after retrieving the string.[^1]
 
-#### 
 
 #### Accessing User Preferences | Header String
 
@@ -38,25 +37,17 @@ Participating vendors may also access user choices via a header string created b
 
 # Example Strings
 
-  
-
 ## Example 1: No Global Preference, Three Participant Preferences
 
 ### **Base64 (base64url[^3]):**
 
 BYVHiWSADABAAIQAwAAA
 
-###  
-
 ### **Binary:**
 
-### 000001011000010101000111100010010110010010000000000011000000000001000000000000001000010000000000110000000000000000
-
-###  
+000001011000010101000111100010010110010010000000000011000000000001000000000000001000010000000000110000000000000000
 
 ### **Annotated Binary:**
-
-###  
 
 | Bits | Field | Value/Description |
 | :---- | :---- | :---- |
@@ -72,9 +63,6 @@ BYVHiWSADABAAIQAwAAA
 | 0000 | Choice Status | 0; the user has explicitly chosen to limit data collection and use for IBA. |
 | 000000000000   | *(Per-Category Records Section)* Number of Per-Category Records | 0 per-category records will follow. |
 
-###  
-
-## 
 
 ## Example 2: No Global Preference, One Category Preference
 
@@ -82,19 +70,12 @@ BYVHiWSADABAAIQAwAAA
 
 BYVHiWSAAABAZEA
 
-###  
-
 ### **Binary:**
 
-### 0000010110000101010001111000100101100100100000000000000000000000010000000110010001
+0000010110000101010001111000100101100100100000000000000000000000010000000110010001
 
-###  
 
 ### **Annotated Binary:**
-
-###  
-
-### 
 
 | Bits | Field | Value/Description |
 | :---- | :---- | :---- |
@@ -106,7 +87,7 @@ BYVHiWSAAABAZEA
 | 000000011001 | *(First Category Record)* Category ID | Category ID 25: Travel (as defined in the category reference file). |
 | 0001 | Category Preference | 1; the user has expressed an explicit preference to allow/include this category. |
 
-###  
+
 
 ## Example 3: Global Preference Only (for IBA)
 
@@ -114,17 +95,11 @@ BYVHiWSAAABAZEA
 
 BYVHiWQAAAAA
 
-###  
-
 ### **Binary:**
 
-### 000001011000010101000111100010010110010000000000000000000000000000
-
-###  
+000001011000010101000111100010010110010000000000000000000000000000
 
 ### **Annotated Binary:**
-
-###  
 
 | Bits | Field | Value/Description |
 | :---- | :---- | :---- |
@@ -134,9 +109,8 @@ BYVHiWQAAAAA
 | 000000000000 | *(Per-Participant Records Section)* Number of Per-Participant Records | 0 per-participant records will follow. |
 | 000000000000   | *(Per-Category Records Section)* Number of Per-Category Records | 0 per-category records will follow. |
 
-###  
 
-### In this example, there are no per-participant or per-category records, so no such records appear, however the number of per-participant or per-category records fields are always required for correct parsing.
+In this example, there are no per-participant or per-category records, so no such records appear, however the number of per-participant or per-category records fields are always required for correct parsing.
 
 ## Example 4: No Global Preference, Four Participant Preferences
 
@@ -144,17 +118,11 @@ BYVHiWQAAAAA
 
 BYVHiWSAEDsB54AzQUeAAAA
 
-###  
-
 ### **Binary:**
 
-### 0000010110000101010001111000100101100100100000000001000000111011000000011110011110000000001100110100000101000111100000000000000000
-
-###  
+0000010110000101010001111000100101100100100000000001000000111011000000011110011110000000001100110100000101000111100000000000000000
 
 ### **Annotated Binary:**
-
-###  
 
 | Bits | Field | Value/Description |
 | :---- | :---- | :---- |
@@ -172,9 +140,6 @@ BYVHiWSAEDsB54AzQUeAAAA
 | 0000 | Choice Status | 0; the user has explicitly chosen to limit data collection and use for IBA. |
 | 000000000000   | *(Per-Category Records Section)* Number of Per-Category Records | 0 per-category records will follow. |
 
-### 
-
-## 
 
 ## Example 5: No Global Preference, Three Category Preferences
 
@@ -182,19 +147,11 @@ BYVHiWSAEDsB54AzQUeAAAA
 
 BYVHiWSAAADABEAUQExA
 
-###  
-
 ### **Binary:**
 
-### 000001011000010101000111100010010110010010000000000000000000000011000000000001000100000000010100010000000100110001
-
-###  
+000001011000010101000111100010010110010010000000000000000000000011000000000001000100000000010100010000000100110001
 
 ### **Annotated Binary:**
-
-###  
-
-### 
 
 | Bits | Field | Value/Description |
 | :---- | :---- | :---- |
@@ -210,7 +167,8 @@ BYVHiWSAAADABEAUQExA
 | 000000010011 | *(Third Category Record)* Category ID | Category ID 19: Pets |
 | 0001 | Category Preference | 1; the user has expressed an explicit preference to allow/include this category. |
 
-**Important note:** In all of the aforementioned examples, the binary strings are constructed first, according to the AdChoices string specification. The base64url value is derived by converting the binary to base64url. Converting the base64url values back to binary can result in values that don’t 100% match the original binary strings. This is because of padding (extra zeros) added to the end of the string due to the conversion process. This extra padding should be ignored when parsing the binary strings. (Given that the strings include fields for “number of per-participant records” and “number of per-category records,” it will be evident when the padding begins.)
+### Important note:
+In all of the aforementioned examples, the binary strings are constructed first, according to the AdChoices string specification. The base64url value is derived by converting the binary to base64url. Converting the base64url values back to binary can result in values that don’t 100% match the original binary strings. This is because of padding (extra zeros) added to the end of the string due to the conversion process. This extra padding should be ignored when parsing the binary strings. (Given that the strings include fields for “number of per-participant records” and “number of per-category records,” it will be evident when the padding begins.)
 
 For example, a binary string according to the spec may look like this:  
 000001011000010101000111100010010110010010000000000011000000000001000000000000001000010000000000110000000000000000
@@ -220,8 +178,6 @@ But when the same string is decoded from its base64url value, it looks like this
 
 The strings are identical except for the added zeros at the end. If not accounted for, this may cause some automated tests to fail.
 
-*Last updated: April 16, 2025*  
-*v.2.0.5*
 
 [^1]: Those who integrate into the AdChoices tools can receive the string along with an identifier via API for any backend (asynchronous) preference or suppression operations.
 
