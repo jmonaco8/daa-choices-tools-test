@@ -23,7 +23,7 @@ Bridging User Choices
 
 [Appendix 4: Category Preferences](#appendix-4-category-preferences)
 
-[Appendix 5: Proposed OpenRTB 2.x Community Extension](#appendix-5-proposed-openrtb-2.x-community-extension)
+[Appendix 5: OpenRTB 2.x Community Extension](#appendix-5-proposed-openrtb-2.x-community-extension)
 
 [Appendix 6: String Format Graphic Illustration](#appendix-6-string-format-graphic-illustration)
 
@@ -318,7 +318,7 @@ The following table is included to give a sense of the initial preference catego
 | 1        | The user has expressed an explicit preference to allow/include this category.         |
 | 2        | The user has explicitly expressed that they have no preference.                       |
 
-## Appendix 5: Proposed OpenRTB 2.x Community Extension
+## Appendix 5: OpenRTB 2.x Community Extension
 
 To enable AdChoices Signals to be conveyed in OpenRTB bid requests, the following community extension is proposed for OpenRTB 2.x.
 
