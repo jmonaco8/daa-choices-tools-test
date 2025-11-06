@@ -190,7 +190,7 @@ For clarity, it is **not** required that AdChoices Signals be handled in real-ti
 ## Appendix 1: Participants Reference File
 
 The DAA has published a JSON format reference file for participants at: <br>
-**[https://www.digitaladvertisingalliance.net/participants.json](https://www.digitaladvertisingalliance.net/participants.json)**
+**[https://files.aboutads.info/participants.json](https://files.aboutads.info/participants.json)**
 
 This file enumerates the participating companies which may be indicated in the AdChoices Signal. This Appendix describes the file format. Additional fields may be added in the future and consumers of the file should handle unexpected fields gracefully.
 
@@ -243,7 +243,7 @@ Consumers of AdChoices Signals can poll this file from time to time to learn of 
 ## Appendix 2: Category Reference File
 
 The DAA has published a JSON format reference file for categories at: <br>
-**[https://www.digitaladvertisingalliance.net/categories.json](https://www.digitaladvertisingalliance.net/categories.json)**
+**[https://files.aboutads.info/categories.json](https://files.aboutads.info/categories.json)**
 
 This file contains the taxonomy of categories users can express a preference for and may be indicated in the AdChoices Signal. This Appendix describes the file format. Additional fields may be added in the future and consumers of the file should handle unexpected fields gracefully.
 
@@ -288,7 +288,7 @@ Consumers of AdChoices Signals can poll this file from time to time to learn of 
 
 ### Sample category list
 
-The following table is included to give a sense of the initial preference categories for the specification. Please note, this list is just an initial sample. **Always refer to the public resource file at [https://www.digitaladvertisingalliance.net/categories.json](https://www.digitaladvertisingalliance.net/categories.json) for the latest taxonomy**.
+The following table is included to give a sense of the initial preference categories for the specification. Please note, this list is just an initial sample. **Always refer to the public resource file at [https://files.aboutads.info/categories.json](https://files.aboutads.info/categories.json) for the latest taxonomy**.
 
 | **Category ID** | **Category name**                                 |
 |-----------------|---------------------------------------------------|
@@ -338,7 +338,7 @@ In OpenRTB 2.6, there is also an object called ```regs``` ([section 3.2.3 of the
 
 ## Appendix 7: AdChoices Signal Usage Illustration
 
-![](https://assets.youradchoices.ca/acs/appendix7.png)
+![AdChoices Signal Usage Illustration](https://assets.aboutads.info/docs/appendix7.png)
 
 ## Appendix 8: Reading The AdChoices Signal From The PMC Extension
 
